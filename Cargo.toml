@@ -23,6 +23,7 @@ toml = { version = "0.9", default-features = false, features = ["std", "parse", 
 
 [package]
 name = "rustlings"
+default-run = "rustlings"
 description = "Small exercises to get you used to reading and writing Rust code!"
 version.workspace = true
 authors.workspace = true
@@ -85,3 +86,457 @@ todo = "warn"
 
 [lints]
 workspace = true
+
+# 00_intro
+[[bin]]
+name = "intro1"
+path = "exercises/00_intro/intro1.rs"
+
+[[bin]]
+name = "intro2"
+path = "exercises/00_intro/intro2.rs"
+
+# 01_variables
+[[bin]]
+name = "variables1"
+path = "exercises/01_variables/variables1.rs"
+
+[[bin]]
+name = "variables2"
+path = "exercises/01_variables/variables2.rs"
+
+[[bin]]
+name = "variables3"
+path = "exercises/01_variables/variables3.rs"
+
+[[bin]]
+name = "variables4"
+path = "exercises/01_variables/variables4.rs"
+
+[[bin]]
+name = "variables5"
+path = "exercises/01_variables/variables5.rs"
+
+[[bin]]
+name = "variables6"
+path = "exercises/01_variables/variables6.rs"
+
+# 02_functions
+[[bin]]
+name = "functions1"
+path = "exercises/02_functions/functions1.rs"
+
+[[bin]]
+name = "functions2"
+path = "exercises/02_functions/functions2.rs"
+
+[[bin]]
+name = "functions3"
+path = "exercises/02_functions/functions3.rs"
+
+[[bin]]
+name = "functions4"
+path = "exercises/02_functions/functions4.rs"
+
+[[bin]]
+name = "functions5"
+path = "exercises/02_functions/functions5.rs"
+
+# 03_if
+[[bin]]
+name = "if1"
+path = "exercises/03_if/if1.rs"
+
+[[bin]]
+name = "if2"
+path = "exercises/03_if/if2.rs"
+
+[[bin]]
+name = "if3"
+path = "exercises/03_if/if3.rs"
+
+# 04_primitive_types
+[[bin]]
+name = "primitive_types1"
+path = "exercises/04_primitive_types/primitive_types1.rs"
+
+[[bin]]
+name = "primitive_types2"
+path = "exercises/04_primitive_types/primitive_types2.rs"
+
+[[bin]]
+name = "primitive_types3"
+path = "exercises/04_primitive_types/primitive_types3.rs"
+
+[[bin]]
+name = "primitive_types4"
+path = "exercises/04_primitive_types/primitive_types4.rs"
+
+[[bin]]
+name = "primitive_types5"
+path = "exercises/04_primitive_types/primitive_types5.rs"
+
+[[bin]]
+name = "primitive_types6"
+path = "exercises/04_primitive_types/primitive_types6.rs"
+
+# 05_vecs
+[[bin]]
+name = "vecs1"
+path = "exercises/05_vecs/vecs1.rs"
+
+[[bin]]
+name = "vecs2"
+path = "exercises/05_vecs/vecs2.rs"
+
+# 06_move_semantics
+[[bin]]
+name = "move_semantics1"
+path = "exercises/06_move_semantics/move_semantics1.rs"
+
+[[bin]]
+name = "move_semantics2"
+path = "exercises/06_move_semantics/move_semantics2.rs"
+
+[[bin]]
+name = "move_semantics3"
+path = "exercises/06_move_semantics/move_semantics3.rs"
+
+[[bin]]
+name = "move_semantics4"
+path = "exercises/06_move_semantics/move_semantics4.rs"
+
+[[bin]]
+name = "move_semantics5"
+path = "exercises/06_move_semantics/move_semantics5.rs"
+
+[[bin]]
+name = "move_semantics6"
+path = "exercises/06_move_semantics/move_semantics6.rs"
+
+# 07_structs
+[[bin]]
+name = "structs1"
+path = "exercises/07_structs/structs1.rs"
+
+[[bin]]
+name = "structs2"
+path = "exercises/07_structs/structs2.rs"
+
+[[bin]]
+name = "structs3"
+path = "exercises/07_structs/structs3.rs"
+
+# 08_enums
+[[bin]]
+name = "enums1"
+path = "exercises/08_enums/enums1.rs"
+
+[[bin]]
+name = "enums2"
+path = "exercises/08_enums/enums2.rs"
+
+[[bin]]
+name = "enums3"
+path = "exercises/08_enums/enums3.rs"
+
+# 09_strings
+[[bin]]
+name = "strings1"
+path = "exercises/09_strings/strings1.rs"
+
+[[bin]]
+name = "strings2"
+path = "exercises/09_strings/strings2.rs"
+
+[[bin]]
+name = "strings3"
+path = "exercises/09_strings/strings3.rs"
+
+[[bin]]
+name = "strings4"
+path = "exercises/09_strings/strings4.rs"
+
+# 10_modules
+[[bin]]
+name = "modules1"
+path = "exercises/10_modules/modules1.rs"
+
+[[bin]]
+name = "modules2"
+path = "exercises/10_modules/modules2.rs"
+
+[[bin]]
+name = "modules3"
+path = "exercises/10_modules/modules3.rs"
+
+# 11_hashmaps
+[[bin]]
+name = "hashmaps1"
+path = "exercises/11_hashmaps/hashmaps1.rs"
+
+[[bin]]
+name = "hashmaps2"
+path = "exercises/11_hashmaps/hashmaps2.rs"
+
+[[bin]]
+name = "hashmaps3"
+path = "exercises/11_hashmaps/hashmaps3.rs"
+
+# 12_options
+[[bin]]
+name = "options1"
+path = "exercises/12_options/options1.rs"
+
+[[bin]]
+name = "options2"
+path = "exercises/12_options/options2.rs"
+
+[[bin]]
+name = "options3"
+path = "exercises/12_options/options3.rs"
+
+# 13_error_handling
+[[bin]]
+name = "errors1"
+path = "exercises/13_error_handling/errors1.rs"
+
+[[bin]]
+name = "errors2"
+path = "exercises/13_error_handling/errors2.rs"
+
+[[bin]]
+name = "errors3"
+path = "exercises/13_error_handling/errors3.rs"
+
+[[bin]]
+name = "errors4"
+path = "exercises/13_error_handling/errors4.rs"
+
+[[bin]]
+name = "errors5"
+path = "exercises/13_error_handling/errors5.rs"
+
+[[bin]]
+name = "errors6"
+path = "exercises/13_error_handling/errors6.rs"
+
+# 14_generics
+[[bin]]
+name = "generics1"
+path = "exercises/14_generics/generics1.rs"
+
+[[bin]]
+name = "generics2"
+path = "exercises/14_generics/generics2.rs"
+
+# 15_traits
+[[bin]]
+name = "traits1"
+path = "exercises/15_traits/traits1.rs"
+
+[[bin]]
+name = "traits2"
+path = "exercises/15_traits/traits2.rs"
+
+[[bin]]
+name = "traits3"
+path = "exercises/15_traits/traits3.rs"
+
+[[bin]]
+name = "traits4"
+path = "exercises/15_traits/traits4.rs"
+
+[[bin]]
+name = "traits5"
+path = "exercises/15_traits/traits5.rs"
+
+# 16_lifetimes
+[[bin]]
+name = "lifetimes1"
+path = "exercises/16_lifetimes/lifetimes1.rs"
+
+[[bin]]
+name = "lifetimes2"
+path = "exercises/16_lifetimes/lifetimes2.rs"
+
+[[bin]]
+name = "lifetimes3"
+path = "exercises/16_lifetimes/lifetimes3.rs"
+
+# 17_tests
+[[bin]]
+name = "tests1"
+path = "exercises/17_tests/tests1.rs"
+
+[[bin]]
+name = "tests2"
+path = "exercises/17_tests/tests2.rs"
+
+[[bin]]
+name = "tests3"
+path = "exercises/17_tests/tests3.rs"
+
+[[bin]]
+name = "tests4"
+path = "exercises/17_tests/tests4.rs"
+
+# 18_iterators
+[[bin]]
+name = "iterators1"
+path = "exercises/18_iterators/iterators1.rs"
+
+[[bin]]
+name = "iterators2"
+path = "exercises/18_iterators/iterators2.rs"
+
+[[bin]]
+name = "iterators3"
+path = "exercises/18_iterators/iterators3.rs"
+
+[[bin]]
+name = "iterators4"
+path = "exercises/18_iterators/iterators4.rs"
+
+[[bin]]
+name = "iterators5"
+path = "exercises/18_iterators/iterators5.rs"
+
+# 19_smart_pointers
+[[bin]]
+name = "box1"
+path = "exercises/19_smart_pointers/box1.rs"
+
+[[bin]]
+name = "rc1"
+path = "exercises/19_smart_pointers/rc1.rs"
+
+[[bin]]
+name = "arc1"
+path = "exercises/19_smart_pointers/arc1.rs"
+
+[[bin]]
+name = "cow1"
+path = "exercises/19_smart_pointers/cow1.rs"
+
+# 20_threads
+[[bin]]
+name = "threads1"
+path = "exercises/20_threads/threads1.rs"
+
+[[bin]]
+name = "threads2"
+path = "exercises/20_threads/threads2.rs"
+
+[[bin]]
+name = "threads3"
+path = "exercises/20_threads/threads3.rs"
+
+# 21_macros
+[[bin]]
+name = "macros1"
+path = "exercises/21_macros/macros1.rs"
+
+[[bin]]
+name = "macros2"
+path = "exercises/21_macros/macros2.rs"
+
+[[bin]]
+name = "macros3"
+path = "exercises/21_macros/macros3.rs"
+
+[[bin]]
+name = "macros4"
+path = "exercises/21_macros/macros4.rs"
+
+# 22_clippy
+[[bin]]
+name = "clippy1"
+path = "exercises/22_clippy/clippy1.rs"
+
+[[bin]]
+name = "clippy2"
+path = "exercises/22_clippy/clippy2.rs"
+
+[[bin]]
+name = "clippy3"
+path = "exercises/22_clippy/clippy3.rs"
+
+# 23_conversions
+[[bin]]
+name = "using_as"
+path = "exercises/23_conversions/using_as.rs"
+
+[[bin]]
+name = "from_into"
+path = "exercises/23_conversions/from_into.rs"
+
+[[bin]]
+name = "from_str"
+path = "exercises/23_conversions/from_str.rs"
+
+[[bin]]
+name = "try_from_into"
+path = "exercises/23_conversions/try_from_into.rs"
+
+[[bin]]
+name = "as_ref_mut"
+path = "exercises/23_conversions/as_ref_mut.rs"
+
+# Algorithm exercises (jika ada)
+[[bin]]
+name = "algorithm1"
+path = "exercises/algorithm/algorithm1.rs"
+
+[[bin]]
+name = "algorithm2"
+path = "exercises/algorithm/algorithm2.rs"
+
+[[bin]]
+name = "algorithm3"
+path = "exercises/algorithm/algorithm3.rs"
+
+[[bin]]
+name = "algorithm4"
+path = "exercises/algorithm/algorithm4.rs"
+
+[[bin]]
+name = "algorithm5"
+path = "exercises/algorithm/algorithm5.rs"
+
+[[bin]]
+name = "algorithm6"
+path = "exercises/algorithm/algorithm6.rs"
+
+[[bin]]
+name = "algorithm7"
+path = "exercises/algorithm/algorithm7.rs"
+
+[[bin]]
+name = "algorithm8"
+path = "exercises/algorithm/algorithm8.rs"
+
+[[bin]]
+name = "algorithm9"
+path = "exercises/algorithm/algorithm9.rs"
+
+[[bin]]
+name = "algorithm10"
+path = "exercises/algorithm/algorithm10.rs"
+
+# Quiz exercises
+[[bin]]
+name = "quiz1"
+path = "exercises/quiz1.rs"
+
+[[bin]]
+name = "quiz2"
+path = "exercises/quiz2.rs"
+
+[[bin]]
+name = "quiz3"
+path = "exercises/quiz3.rs"
+
+[[bin]]
+name = "quiz4"
+path = "exercises/quiz4.rs"
