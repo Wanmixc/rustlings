@@ -4,7 +4,7 @@ use std::{
     io,
 };
 
-use crate::info_file::ExerciseInfo;
+use crate::{exercise::PENDING_MARKER, info_file::ExerciseInfo};
 
 /// Contains all embedded files.
 pub static EMBEDDED_FILES: EmbeddedFiles = rustlings_macros::include_files!();
@@ -88,7 +88,7 @@ impl EmbeddedFiles {
             exercise_path.push_str(&exercise_info.name);
             exercise_path.push_str(".rs");
 
-            fs::write(&exercise_path, exercise_files.exercise)
+            write_exercise(&exercise_path, exercise_files.exercise)
                 .with_context(|| format!("Failed to write the exercise file {exercise_path}"))?;
         }
 
@@ -100,7 +100,7 @@ impl EmbeddedFiles {
         let dir = &self.exercise_dirs[exercise_files.dir_ind];
 
         dir.init_on_disk()?;
-        fs::write(path, exercise_files.exercise)
+        write_exercise(path, exercise_files.exercise)
             .with_context(|| format!("Failed to write the exercise file {path}"))
     }
 
@@ -132,6 +132,17 @@ impl EmbeddedFiles {
 
         Ok(solution_path)
     }
+}
+
+fn write_exercise(path: &str, content: &[u8]) -> io::Result<()> {
+    if content.starts_with(PENDING_MARKER.as_bytes()) {
+        return fs::write(path, content);
+    }
+    let mut contents = Vec::with_capacity(content.len() + PENDING_MARKER.len() + 2);
+    contents.extend_from_slice(PENDING_MARKER.as_bytes());
+    contents.push(b'\n');
+    contents.extend_from_slice(content);
+    fs::write(path, contents)
 }
 
 #[cfg(test)]

@@ -1,3 +1,4 @@
+// I AM NOT DONE
 trait Licensed {
     // TODO: Add a default implementation for `licensing_info` so that
     // implementors like the two structs below can share that default behavior

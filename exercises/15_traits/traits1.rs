@@ -1,3 +1,4 @@
+// I AM NOT DONE
 // The trait `AppendBar` has only one function which appends "Bar" to any object
 // implementing this trait.
 trait AppendBar {

@@ -10,7 +10,7 @@ use std::{
 
 use crate::{
     app_state::{AppState, ExercisesProgress},
-    exercise::{OUTPUT_CAPACITY, RunnableExercise, solution_link_line},
+    exercise::{OUTPUT_CAPACITY, RunnableExercise, has_pending_marker, solution_link_line},
 };
 
 pub fn run(app_state: &mut AppState) -> Result<ExitCode> {
@@ -38,6 +38,11 @@ pub fn run(app_state: &mut AppState) -> Result<ExitCode> {
     stdout.write_all(exercise.path.as_bytes())?;
     stdout.queue(ResetColor)?;
     stdout.write_all(b"\n")?;
+
+    if has_pending_marker(std::path::Path::new(exercise.path))? {
+        stdout.write_all(b"Remove `// I AM NOT DONE` to complete this exercise.\n")?;
+        return Ok(ExitCode::SUCCESS);
+    }
 
     if let Some(solution_path) = app_state.current_solution_path()? {
         stdout.write_all(b"\n")?;

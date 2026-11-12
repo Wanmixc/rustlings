@@ -18,7 +18,7 @@ use crate::{
     clear_terminal,
     cmd::CmdRunner,
     embedded::EMBEDDED_FILES,
-    exercise::{Exercise, RunnableExercise},
+    exercise::{Exercise, RunnableExercise, has_pending_marker},
     info_file::ExerciseInfo,
     term::{self, CheckProgressVisualizer},
 };
@@ -442,7 +442,13 @@ impl AppState {
                                 break;
                             };
 
-                            let success = exercise.run_exercise(None, &slf.cmd_runner);
+                            let success =
+                                exercise
+                                    .run_exercise(None, &slf.cmd_runner)
+                                    .and_then(|success| {
+                                        Ok(success
+                                            && !has_pending_marker(Path::new(exercise.path))?)
+                                    });
                             let progress = match success {
                                 Ok(true) => CheckProgress::Done,
                                 Ok(false) => CheckProgress::Pending,
@@ -491,7 +497,8 @@ impl AppState {
                     progress_visualizer.update(&progresses)?;
 
                     let exercise = &self.exercises[exercise_ind];
-                    let success = exercise.run_exercise(None, &self.cmd_runner)?;
+                    let success = exercise.run_exercise(None, &self.cmd_runner)?
+                        && !has_pending_marker(Path::new(exercise.path))?;
                     if success {
                         progresses[exercise_ind] = CheckProgress::Done;
                     } else {

@@ -15,7 +15,7 @@ use std::{
 use crate::{
     app_state::{AppState, ExercisesProgress},
     clear_terminal,
-    exercise::{OUTPUT_CAPACITY, RunnableExercise, solution_link_line},
+    exercise::{OUTPUT_CAPACITY, RunnableExercise, has_pending_marker, solution_link_line},
     term::progress_bar,
 };
 
@@ -152,12 +152,23 @@ impl<'a> WatchState<'a> {
         &mut self,
         exercise_ind: usize,
         stdout: &mut StdoutLock,
-    ) -> Result<()> {
+    ) -> Result<ExercisesProgress> {
         if self.app_state.current_exercise_ind() != exercise_ind {
-            return Ok(());
+            return Ok(ExercisesProgress::CurrentPending);
         }
 
-        self.run_current_exercise(stdout)
+        self.run_current_exercise(stdout)?;
+        self.auto_advance(stdout)
+    }
+
+    pub fn auto_advance(&mut self, stdout: &mut StdoutLock) -> Result<ExercisesProgress> {
+        if self.done_status != DoneStatus::Pending
+            && !has_pending_marker(std::path::Path::new(self.app_state.current_exercise().path))?
+        {
+            self.next_exercise(stdout)
+        } else {
+            Ok(ExercisesProgress::CurrentPending)
+        }
     }
 
     /// Move on to the next exercise if the current one is done.
@@ -167,21 +178,14 @@ impl<'a> WatchState<'a> {
             DoneStatus::Pending => return Ok(ExercisesProgress::CurrentPending),
         }
 
+        if has_pending_marker(std::path::Path::new(self.app_state.current_exercise().path))? {
+            return Ok(ExercisesProgress::CurrentPending);
+        }
+
         self.app_state.done_current_exercise::<true>(stdout)
     }
 
     fn show_prompt(&self, stdout: &mut StdoutLock) -> io::Result<()> {
-        if self.done_status != DoneStatus::Pending {
-            stdout.queue(SetAttribute(Attribute::Bold))?;
-            stdout.write_all(b"n")?;
-            stdout.queue(ResetColor)?;
-            stdout.write_all(b":")?;
-            stdout.queue(SetAttribute(Attribute::Underlined))?;
-            stdout.write_all(b"next")?;
-            stdout.queue(ResetColor)?;
-            stdout.write_all(b" / ")?;
-        }
-
         let mut show_key = |key, postfix| {
             stdout.queue(SetAttribute(Attribute::Bold))?;
             stdout.write_all(&[key])?;
@@ -237,7 +241,7 @@ impl<'a> WatchState<'a> {
             }
 
             stdout.write_all(
-                "When done experimenting, enter `n` to move on to the next exercise 🦀\n\n"
+                "Remove `// I AM NOT DONE` and save to move on to the next exercise.\n\n"
                     .as_bytes(),
             )?;
         }

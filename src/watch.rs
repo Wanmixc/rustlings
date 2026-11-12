@@ -102,7 +102,16 @@ fn run_watch(
                 ExercisesProgress::NewPending => watch_state.run_current_exercise(&mut stdout)?,
                 ExercisesProgress::CurrentPending => (),
             },
-            WatchEvent::Input(InputEvent::Run) => watch_state.run_current_exercise(&mut stdout)?,
+            WatchEvent::Input(InputEvent::Run) => {
+                watch_state.run_current_exercise(&mut stdout)?;
+                match watch_state.auto_advance(&mut stdout)? {
+                    ExercisesProgress::AllDone => break,
+                    ExercisesProgress::NewPending => {
+                        watch_state.run_current_exercise(&mut stdout)?
+                    }
+                    ExercisesProgress::CurrentPending => (),
+                }
+            }
             WatchEvent::Input(InputEvent::Hint) => watch_state.show_hint(&mut stdout)?,
             WatchEvent::Input(InputEvent::List) => return Ok(WatchExit::List),
             WatchEvent::Input(InputEvent::CheckAll) => match watch_state
@@ -118,7 +127,13 @@ fn run_watch(
                 break;
             }
             WatchEvent::FileChange { exercise_ind } => {
-                watch_state.handle_file_change(exercise_ind, &mut stdout)?;
+                match watch_state.handle_file_change(exercise_ind, &mut stdout)? {
+                    ExercisesProgress::AllDone => break,
+                    ExercisesProgress::NewPending => {
+                        watch_state.run_current_exercise(&mut stdout)?
+                    }
+                    ExercisesProgress::CurrentPending => (),
+                }
             }
             WatchEvent::TerminalResize { width } => {
                 watch_state.update_term_width(width, &mut stdout)?;

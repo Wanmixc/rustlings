@@ -188,6 +188,8 @@ bin = [
   { name = "try_from_into_sol", path = "../solutions/23_conversions/try_from_into.rs" },
   { name = "as_ref_mut", path = "../exercises/23_conversions/as_ref_mut.rs" },
   { name = "as_ref_mut_sol", path = "../solutions/23_conversions/as_ref_mut.rs" },
+  { name = "quiz4", path = "../exercises/quizzes/quiz4.rs" },
+  { name = "quiz4_sol", path = "../solutions/quizzes/quiz4.rs" },
 ]
 
 [package]

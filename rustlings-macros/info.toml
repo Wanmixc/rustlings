@@ -13,7 +13,7 @@ get started, here are some notes about how Rustlings operates:
    will show you the path of the current exercise under the progress bar. Open
    the exercise file in your editor, fix errors and save the file. Rustlings
    will automatically detect the file change and rerun the exercise. If all
-   errors are fixed, Rustlings will ask you to move on to the next exercise.
+   errors are fixed, remove `// I AM NOT DONE` and save to move on.
 3. If you're stuck on an exercise, enter `h` to show a hint.
 4. If an exercise doesn't make sense to you, feel free to open an issue on
    GitHub! (https://github.com/rust-lang/rustlings). We look at every issue, and
@@ -35,8 +35,7 @@ dir = "00_intro"
 test = false
 skip_check_unsolved = true
 hint = """
-Enter `n` to move on to the next exercise.
-You might need to press ENTER after typing `n`."""
+Remove `// I AM NOT DONE` and save to move on to the next exercise."""
 
 [[exercises]]
 name = "intro2"
@@ -1209,3 +1208,8 @@ name = "as_ref_mut"
 dir = "23_conversions"
 hint = """
 Add `AsRef<str>` or `AsMut<u32>` as a trait bound to the functions."""
+
+[[exercises]]
+name = "quiz4"
+dir = "quizzes"
+hint = "Try `iter`, `parse`, and `try_fold` to stop at the first error."

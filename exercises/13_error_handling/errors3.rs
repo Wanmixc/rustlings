@@ -1,3 +1,4 @@
+// I AM NOT DONE
 // This is a program that is trying to use a completed version of the
 // `total_cost` function from the previous exercise. It's not working though!
 // Why not? What should we do to fix it?

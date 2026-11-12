@@ -539,4 +539,4 @@ path = "exercises/quiz3.rs"
 
 [[bin]]
 name = "quiz4"
-path = "exercises/quiz4.rs"
+path = "exercises/quizzes/quiz4.rs"

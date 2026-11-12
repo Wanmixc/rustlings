@@ -3,7 +3,10 @@ use crossterm::{
     QueueableCommand,
     style::{Attribute, Color, ResetColor, SetAttribute, SetForegroundColor},
 };
-use std::io::{self, StdoutLock, Write};
+use std::{
+    io::{self, StdoutLock, Write},
+    path::Path,
+};
 
 use crate::{
     cmd::CmdRunner,
@@ -12,6 +15,13 @@ use crate::{
 
 /// The initial capacity of the output buffer.
 pub const OUTPUT_CAPACITY: usize = 1 << 14;
+pub const PENDING_MARKER: &str = "// I AM NOT DONE";
+
+pub fn has_pending_marker(path: &Path) -> io::Result<bool> {
+    Ok(std::fs::read_to_string(path)?
+        .lines()
+        .any(|line| line.trim() == PENDING_MARKER))
+}
 
 pub fn solution_link_line(
     stdout: &mut StdoutLock,
@@ -219,5 +229,20 @@ impl RunnableExercise for Exercise {
     #[inline]
     fn test(&self) -> bool {
         self.test
+    }
+}
+
+#[cfg(test)]
+mod marker_tests {
+    use super::has_pending_marker;
+
+    #[test]
+    fn marker_must_be_removed_before_exercise_is_ready() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("exercise.rs");
+        std::fs::write(&path, "// I AM NOT DONE\nfn main() {}\n").unwrap();
+        assert!(has_pending_marker(&path).unwrap());
+        std::fs::write(&path, "fn main() {}\n").unwrap();
+        assert!(!has_pending_marker(&path).unwrap());
     }
 }
